@@ -266,7 +266,7 @@ class User:
     @staticmethod
     def get_users():
         user_instances = []
-        with open("user_data.json", encoding="utf8") as user_data_text:
+        with open("/app/GunBoundServer/user_data.json", encoding="utf8") as user_data_text:
             data_users = json.load(user_data_text)
             for data_user in data_users:
                 user_instance: User = User(data_user["username"], data_user["password"], data_user["guild"],
@@ -314,7 +314,7 @@ class User:
         for user_item in in_user_list:
             users_to_serialize.append(User.user_to_serializable(user_item))
         print(json.dumps(users_to_serialize))
-        with open("user_data.json", "w") as data_file_handle:
+        with open("/app/GunBoundServer/user_data.json", "w") as data_file_handle:
             data_file_handle.write(json.dumps(users_to_serialize))
         print("Save complete")
 
@@ -782,7 +782,7 @@ class GameServer(object):
 
     @staticmethod
     def get_map_data():
-        with open("map_data.json",  encoding="utf8") as map_data_text:
+        with open("/app/GunBoundServer/map_data.json",  encoding="utf8") as map_data_text:
             return json.load(map_data_text)
 
     def client_connection(self, client, address):

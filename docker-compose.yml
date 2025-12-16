@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  gunbound-server:
+    build: .
+    container_name: gunbound-server
+    ports:
+      - "8370:8370"  # Broker Server
+      - "8371:8371"  # Game Server
+    environment:
+      - SERVER_IP=192.168.86.89  # ALTERE PARA SEU IP LOCAL
+    volumes:
+      - ./data:/app/data  # Para persistência de dados
+    restart: unless-stopped
